@@ -13,9 +13,9 @@ import schema from './graphql/schema'
 import Content from './containers/Content'
 import Contents from './containers/Contents'
 
-const store = createStore()
 const networkInterface = createLocalNetworkInterface({schema})
 const client = new ApolloClient({networkInterface})
+const store = createStore(client)
 
 const Main = () => (
   <ApolloProvider store={store} client={client}>

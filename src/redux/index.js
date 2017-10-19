@@ -2,13 +2,12 @@ import {createStore, applyMiddleware, combineReducers, compose} from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
-const reducer = combineReducers(require('./modules/index'))
-
 const prodMiddleware = [thunk]
 const devMiddleware = [logger]
 
-export default function createAppStore(initialValue = {}) {
+export default function createAppStore(client, initialValue = {}) {
   let store
+  const reducer = combineReducers({apollo: client.reducer()})
 
   if (process.env.NODE_ENV === 'development') {
     // Development mode with Redux DevTools support enabled.

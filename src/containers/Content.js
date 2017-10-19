@@ -1,18 +1,7 @@
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
 import {graphql, compose} from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Content from '../components/Content'
-import * as actionCreators from '../redux/modules/counter'
-
-const mapStateToProps = state => ({
-  count: state.counter.count
-})
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actionCreators, dispatch),
-  dispatch
-})
 
 const query = gql`
 query GetContent($id: ID!) {
@@ -38,7 +27,4 @@ const queryOptions = {
 }
 
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  graphql(query, queryOptions)
-)(Content)
+export default graphql(query, queryOptions)(Content)
