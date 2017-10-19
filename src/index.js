@@ -4,7 +4,7 @@ import {connect, Provider} from 'react-redux'
 import {ApolloProvider} from 'react-apollo'
 import ApolloClient from 'apollo-client'
 
-import '../global' // before importing join-monster!
+import './globals' // before importing join-monster!
 
 import {createLocalNetworkInterface} from './graphql/LocalNetworkInterface'
 import createStore from './redux'

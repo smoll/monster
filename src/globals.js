@@ -1,3 +1,5 @@
+// Shims provided by 'node-libs-browser' in rn-cli.config.js
+
 // Inject node globals into React Native global scope.
 global.Buffer = require('buffer').Buffer;
 global.process = require('process');
