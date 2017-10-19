@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {graphql, compose} from 'react-apollo'
 import gql from 'graphql-tag'
 
-import Content from '../components/Content'
+import Contents from '../components/Contents'
 import * as actionCreators from '../redux/modules/counter'
 
 const mapStateToProps = state => ({
@@ -14,25 +14,32 @@ const mapDispatchToProps = dispatch => ({
   dispatch
 })
 
-const query = gql`
-query GetContent($id: ID!) {
-  content(id: $id) {
-    id
-    title
-    imdb
+const query = gql`query SearchContent($term: String!) {
+  contents(term: $term) {
+    pageInfo {
+      endCursor
+      hasPreviousPage
+      hasNextPage
+    }
+    edges {
+      node {
+        id
+        title
+        imdb
+      }
+    }
   }
 }
 `
-
 const queryOptions = {
-  props: ({ ownProps, data: { error, loading, content } }) => ({
+  props: ({ ownProps, data: { error, loading, contents } }) => ({
     loading, // Mapping of `${propInComponent}: ${propFromRedux}`
     error,
-    content,
+    contents,
   }),
   options: ownProps => ({
     variables: {
-      id: 'Q29udGVudDoy',
+      term: '',
     }
   })
 }
@@ -41,4 +48,4 @@ const queryOptions = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   graphql(query, queryOptions)
-)(Content)
+)(Contents)

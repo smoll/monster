@@ -71,11 +71,15 @@ export default new GraphQLObjectType({
       where: (contentTable, args, context) => { // eslint-disable-line no-unused-vars
         if (args.id) {
           const { type, id } = fromGlobalId(args.id)
+          console.log(`type=${type}, id=${id}, contentTable=${contentTable}`)
           return `${contentTable}.id = ${id}`
         }
       },
       resolve: (parent, args, context, resolveInfo) => {
-        return joinMonster(resolveInfo, context, sql => db.run(sql), options)
+        return joinMonster(resolveInfo, context, sql => {
+          console.log('sql==', sql)
+          return db.run(sql)
+        }, options)
       }
     },
   })

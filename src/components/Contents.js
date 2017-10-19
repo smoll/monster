@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {StyleSheet, TextInput} from 'react-native'
 
-const Content = (props) => {
-  const {loading, error, content} = props
+const Contents = (props) => {
+  const {loading, error, contents} = props
 
   return <TextInput multiline={true} numberOfLines={10}>{JSON.stringify(props)}</TextInput>
 }
 
-Content.propTypes = {
+Contents.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
-  content: PropTypes.object,
+  contents: PropTypes.object,
 }
 
 const styles = StyleSheet.create({
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Content
+export default Contents
