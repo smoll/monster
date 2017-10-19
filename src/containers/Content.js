@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 
 const query = gql`
 query SearchCategories($term: String!) {
-  attractions(term: $term, first: 10) {
+  contents(term: $term, first: 10) {
     pageInfo {
       endCursor
       hasPreviousPage
@@ -25,7 +25,7 @@ query SearchCategories($term: String!) {
     edges {
       node {
         id
-        name
+        title
       }
     }
   }
