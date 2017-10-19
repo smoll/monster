@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 
 const query = gql`
 query SearchCategories($term: String!) {
-  contents(term: $term, first: 10) {
+  contents(term: $term) {
     pageInfo {
       endCursor
       hasPreviousPage
@@ -26,6 +26,7 @@ query SearchCategories($term: String!) {
       node {
         id
         title
+        imdb
       }
     }
   }
@@ -33,14 +34,14 @@ query SearchCategories($term: String!) {
 `
 
 const queryOptions = {
-  props: ({ ownProps, data: { error, loading, content } }) => ({
+  props: ({ ownProps, data: { error, loading, contents } }) => ({
     loading, // Mapping of `${propInComponent}: ${propFromRedux}`
     error,
-    content,
+    contents,
   }),
   options: ownProps => ({
     variables: {
-      term: 'a',
+      term: '',
     }
   })
 }

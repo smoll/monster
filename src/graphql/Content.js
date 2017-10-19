@@ -16,7 +16,7 @@ import {
 import {nodeInterface} from './Node'
 
 const Content = new GraphQLObjectType({
-  description: 'an attraction or restaurant',
+  description: 'a piece of content',
   name: 'Content',
   // tell join monster the expression for the table
   sqlTable: 'content',
@@ -39,13 +39,21 @@ const Content = new GraphQLObjectType({
       // no `sqlColumn` and no `resolve`. assumed that the column name is the same as the field name: id
       type: GraphQLString,
     },
-    rating: {
+    imdb: {
       type: GraphQLFloat
     },
   })
 })
 
-const { connectionType: ContentConnection } = connectionDefinitions({ nodeType: Content })
+// create a connection type from the Content type
+// this connection will also include a "total" so we know how many total comments there are
+// this could be used to calculate page numbers
+const { connectionType: ContentConnection } = connectionDefinitions({
+  nodeType: Content,
+  connectionFields: {
+    total: { type: GraphQLInt }
+  }
+})
 
 export { ContentConnection }
 export default Content

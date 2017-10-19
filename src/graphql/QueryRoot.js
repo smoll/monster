@@ -52,7 +52,7 @@ export default new GraphQLObjectType({
       },
       sqlPaginate: false,
       where: (contentTable, args, context, sqlASTNode) => { // eslint-disable-line no-unused-vars
-        // console.log('QueryRoot::sqlASTNode: ', sqlASTNode)
+        console.log('QueryRoot::sqlASTNode: ', sqlASTNode)
         return `UPPER(${contentTable}.title) LIKE "%${args.term.toUpperCase()}%"`
       },
       resolve: (parent, args, context, resolveInfo) => {
