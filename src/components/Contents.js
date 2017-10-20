@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {StyleSheet, TextInput} from 'react-native'
+import {StyleSheet, TextInput, View} from 'react-native'
 
 const Contents = (props) => {
   const {loading, error, contents} = props
 
-  return <TextInput multiline={true} numberOfLines={10}>{JSON.stringify(props)}</TextInput>
+  return (
+    <View style={styles.container}>
+      <TextInput multiline={true} numberOfLines={20}>
+        {JSON.stringify(props)}
+      </TextInput>
+    </View>
+  )
 }
 
 Contents.propTypes = {
@@ -16,9 +22,7 @@ Contents.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
   },
 })
 

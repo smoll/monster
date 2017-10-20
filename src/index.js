@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {ScrollView, StyleSheet} from 'react-native'
 import {connect, Provider} from 'react-redux'
 import {ApolloProvider} from 'react-apollo'
 import ApolloClient from 'apollo-client'
@@ -19,10 +19,10 @@ const store = createStore(client)
 
 const Main = () => (
   <ApolloProvider store={store} client={client}>
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Content />
       <Contents />
-    </View>
+    </ScrollView>
   </ApolloProvider>
 )
 
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-around',
   },
 })
 
