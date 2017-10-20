@@ -46,7 +46,7 @@ const Content = new GraphQLObjectType({
 })
 
 // create a connection type from the Content type
-// this connection will also include a "total" so we know how many total comments there are
+// this connection will also include a "total" so we know how many total pieces of content there are
 // this could be used to calculate page numbers
 const { connectionType: ContentConnection } = connectionDefinitions({
   nodeType: Content,

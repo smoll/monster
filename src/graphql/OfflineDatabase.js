@@ -40,7 +40,7 @@ class OfflineDatabase {
       try {
         await this.run(q)
       } catch(e) {
-        console.log(`${e} - ${q} - SKIPPED!!!`)
+        // console.log(`${e} - ${q} - SKIPPED!!!`)
       }
     })
   }

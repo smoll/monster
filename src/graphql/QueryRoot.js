@@ -9,10 +9,7 @@ import {
 } from 'graphql'
 import {
   fromGlobalId,
-  globalIdField,
   connectionArgs,
-  forwardConnectionArgs,
-  connectionDefinitions,
   connectionFromArray
 } from 'graphql-relay'
 
@@ -26,7 +23,7 @@ import {nodeField} from './Node'
 const db = new OfflineDatabase()
 const options = { dialectModule: sqlite3Module }
 
-export default new GraphQLObjectType({
+const QueryRoot = new GraphQLObjectType({
   description: 'global query object',
   name: 'Query',
   fields: () => ({
@@ -84,3 +81,5 @@ export default new GraphQLObjectType({
     },
   })
 })
+
+export default QueryRoot

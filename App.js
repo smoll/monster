@@ -9,7 +9,7 @@ export default class App extends React.Component {
     await db.bootstrap()
 
     const result = await db.run(`select * from content`)
-    console.log('res===', result)
+    // console.log('res===', result)
   }
 
   render() {
